@@ -11,7 +11,7 @@ namespace FTPManager
     {
         private static string userName = "";
         private static string password = "";
-        private static string host = "";
+        private static string _host = "";
 
         private FtpWebRequest ftpWebRequest = null;
         private FtpWebResponse ftpWebResponse = null;
@@ -26,14 +26,14 @@ namespace FTPManager
         {
             userName = user;
             password = pass;
-            host     = host;
+            _host     = host;
         }
 
         public void downloadFile(string remoteFile, string localFile)
         {
             try
             {
-                ftpWebRequest = (FtpWebRequest) FtpWebRequest.Create(host + "/" + remoteFile);
+                ftpWebRequest = (FtpWebRequest) FtpWebRequest.Create(_host + "/" + remoteFile);
                 ftpWebRequest.Credentials = new NetworkCredential(userName, password);
                 ftpWebRequest.UseBinary = true;
                 ftpWebRequest.UsePassive = true;
@@ -77,7 +77,7 @@ namespace FTPManager
         {
             try
             {
-                ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + remoteFile);
+                ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(_host + "/" + remoteFile);
                 ftpWebRequest.Credentials = new NetworkCredential(userName, password);
                 ftpWebRequest.UseBinary = true;
                 ftpWebRequest.UsePassive = true;
@@ -118,7 +118,7 @@ namespace FTPManager
         {
             try
             {
-                ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + oldName);
+                ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(_host + "/" + oldName);
                 ftpWebRequest.Credentials = new NetworkCredential(userName, password);
                 ftpWebRequest.UseBinary = true;
                 ftpWebRequest.UsePassive = true;
@@ -143,7 +143,7 @@ namespace FTPManager
             try
             {
                 
-                ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + dir);
+                ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(_host + "/" + dir);
                 ftpWebRequest.Credentials = new NetworkCredential(userName, password);
                 ftpWebRequest.UseBinary = true;
                 ftpWebRequest.UsePassive = true;
@@ -195,7 +195,7 @@ namespace FTPManager
             try
             {
 
-                ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + fileName);
+                ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(_host + "/" + fileName);
                 ftpWebRequest.Credentials = new NetworkCredential(userName, password);
                 ftpWebRequest.UseBinary = true;
                 ftpWebRequest.UsePassive = true;
@@ -215,7 +215,7 @@ namespace FTPManager
             try
             {
 
-                ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + fileName);
+                ftpWebRequest = (FtpWebRequest)FtpWebRequest.Create(_host + "/" + fileName);
                 ftpWebRequest.Credentials = new NetworkCredential(userName, password);
                 ftpWebRequest.UseBinary = true;
                 ftpWebRequest.UsePassive = true;
@@ -233,7 +233,7 @@ namespace FTPManager
         {
             long size;
 
-            FtpWebRequest sizeRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + remoteFile);
+            FtpWebRequest sizeRequest = (FtpWebRequest)FtpWebRequest.Create(_host + "/" + remoteFile);
             sizeRequest.Credentials = new NetworkCredential(userName, password);
             sizeRequest.Method = WebRequestMethods.Ftp.GetFileSize;
             sizeRequest.UseBinary = true;

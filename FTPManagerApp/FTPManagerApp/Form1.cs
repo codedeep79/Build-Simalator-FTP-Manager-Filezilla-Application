@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using FTPManager;
 using FileTransferProtocolLib;
@@ -42,8 +36,9 @@ namespace FTPManagerApp
 
         private void btnGetFile_Click(object sender, EventArgs e)
         {
-            string[] files = manager.FilesOnServer("");
-            foreach(string fileName in files)
+            //string[] files = manager.FilesOnServer("");
+            string[] files = client.getFileOnServer("");
+            foreach (string fileName in files)
             {
                 dataGridView.Rows.Add(fileName);
             }
@@ -77,7 +72,7 @@ namespace FTPManagerApp
 
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            manager.DownloadFile(txtBrowse1.Text, txtDownload.Text);
+            //manager.DownloadFile(txtBrowse1.Text, txtDownload.Text);
         }
 
         /// <summary>
@@ -98,23 +93,26 @@ namespace FTPManagerApp
 
         private void btnUpload_Click(object sender, EventArgs e)
         {
-            manager.UploadFile(txtBrowse2.Text, txtUpload.Text);
+            //manager.UploadFile(txtBrowse2.Text, txtUpload.Text);
+            client.uploadFile(txtBrowse2.Text, txtUpload.Text);
         }
 
         private void btnRename_Click(object sender, EventArgs e)
         {
-            manager.ReName(txtOldName.Text, txtNewName.Text);
+            //manager.ReName(txtOldName.Text, txtNewName.Text);
+            client.rename(txtOldName.Text, txtNewName.Text);
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            //client.creatDir(txtCreateDirectory.Text);
-            manager.CreateDirectory(txtCreateDirectory.Text);
+            client.creatDir(txtCreateDirectory.Text);
+            //manager.CreateDirectory(txtCreateDirectory.Text);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            manager.Delete(txtDelete.Text);
+            //manager.Delete(txtDelete.Text);
+            client.Delete(txtDelete.Text);
         }
 
         private void dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -125,7 +123,8 @@ namespace FTPManagerApp
             }
             else
             {
-                string[] files = manager.FilesOnServer(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
+                //string[] files = manager.FilesOnServer(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
+                string[] files = client.getFileOnServer(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
                 dataGridView.Rows.Clear();
                 foreach (string file in files)
                 {
