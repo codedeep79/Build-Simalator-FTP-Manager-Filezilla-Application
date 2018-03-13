@@ -1,5 +1,7 @@
 # Build-Simalator-FTP-Manager-Filezilla-Application
 
+`This Application is used to get file, upload folder or file, rename, download file with the extensions other from your hosting.
+You only enter username, password, url of your ftp host and press Login button. And all functions is started.`
 
 ### Some result image about test this software:
 
