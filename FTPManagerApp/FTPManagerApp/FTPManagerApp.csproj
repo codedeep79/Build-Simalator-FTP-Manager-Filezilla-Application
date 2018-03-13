@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FileTransferProtocolLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\FileTransferProtocolLib.dll</HintPath>
+    </Reference>
     <Reference Include="FTPManager">
       <HintPath>..\..\FTPManager\FTPManager\bin\Debug\FTPManager.dll</HintPath>
     </Reference>
